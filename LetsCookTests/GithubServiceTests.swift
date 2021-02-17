@@ -23,7 +23,7 @@ class GithubServiceTests: XCTestCase {
         let githubService = GithubServer()
         let exp = expectation(description: "Fetch Chefs Favorites from Github")
         
-        githubService.fetchChefsFavorite(fromURLString: "https://www.themealdb.com/api/json/v1/1/random.php") { (result) in
+        githubService.fetchChefsFavorite(fromURLString: URLS.GITHUB_CHEFS_FAVORITE_ENDPOINT) { (result) in
             switch result {
             case .success(let meals):
                 print(meals)
