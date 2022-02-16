@@ -61,10 +61,6 @@ targets:
       iOS: 13.0
     sources:
       - path: iCook
-    # configFiles:
-    #   Debug: iCook/Configuration/Debug.xcconfig
-    #   Staging: iCook/Configuration/Staging.xcconfig
-    #   Release: iCook/Configuration/Release.xcconfig
     scheme:
       testTargets:
         - iCookTests
