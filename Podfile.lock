@@ -1,0 +1,24 @@
+PODS:
+  - lottie-ios (3.3.0)
+  - Reachability (3.2)
+  - SwiftLint (0.45.1)
+
+DEPENDENCIES:
+  - lottie-ios
+  - Reachability
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - lottie-ios
+    - Reachability
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
+
+PODFILE CHECKSUM: 244e6f61a6d84a1307e443a7aa82e7ac3705b888
+
+COCOAPODS: 1.11.2

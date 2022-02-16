@@ -1,0 +1,100 @@
+name: iCook
+# configs:
+#   Debug: debug
+#   Staging: release
+#   Release: release
+options:
+  bundleIdPrefix: com.aganinyakundi.icook
+  deploymentTarget:
+    iOS: 13
+targets:
+  iCookUI:
+    type: framework
+    platform: iOS
+    deploymentTarget:
+      iOS: 13.0
+    info:
+      path: iCookUI/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+    sources:
+      - path: iCookUI
+    scheme:
+      testTargets:
+        - iCookUITests
+      gatherCoverageData: false
+    preBuildScripts:
+      - name: SwiftLint
+        script: |
+                ${PODS_ROOT}/SwiftLint/swiftlint --config .swiftlint.yml
+  iCookUITests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: iCookUI/iCookUITests
+  iCookNetworking:
+    type: framework
+    platform: iOS
+    info:
+      path: iCookNetworking/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+    sources:
+      - path: iCookNetworking
+    scheme:
+      testTargets:
+        - iCookNetworkingTests
+      gatherCoverageData: false
+    preBuildScripts:
+    - name: SwiftLint
+      script: |
+              ${PODS_ROOT}/SwiftLint/swiftlint --config .swiftlint.yml
+  iCookNetworkingTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: iCookNetworking/iCookNetworkingTests
+  iCook:
+    type: application
+    platform: iOS
+    deploymentTarget:
+      iOS: 13.0
+    sources:
+      - path: iCook
+    # configFiles:
+    #   Debug: iCook/Configuration/Debug.xcconfig
+    #   Staging: iCook/Configuration/Staging.xcconfig
+    #   Release: iCook/Configuration/Release.xcconfig
+    scheme:
+      testTargets:
+        - iCookTests
+      gatherCoverageData: false
+    preBuildScripts:
+    - name: SwiftLint
+      script: |
+              ${PODS_ROOT}/SwiftLint/swiftlint --config .swiftlint.yml
+    dependencies:
+      - target: iCookUI
+      - target: iCookNetworking
+    info:
+      path: iCook/Resources/Info.plist
+      properties:
+        ITSAppUsesNonExemptEncryption: false
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPotrait]
+        UILaunchStoryboardName: LaunchScreen
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassname: $(PRODUCT_MODULE_NAME).SceneDelegate
+    settings:
+      FRAMEWORK_SEARCH_PATHS:
+        - $(inherited)
+      DEVELOPMENT_TEAM: 12345 #FIXME
+
+  iCookTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: iCook/iCookTests

@@ -1,0 +1,7 @@
+build_directory: .derivedData
+coverage_service: cobertura_xml
+xcodeproj: iCook.xcodeproj
+workspace: iCook.xcworkspace
+binary_basename:
+  - iCook
+output_directory: ./sonar-reports
